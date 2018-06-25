@@ -128,7 +128,8 @@ Github interface for traffic analysis for last 14 days. Keywords: sas sql join m
     PROCESS
     =======
 
-    data traffic;
+    
+    data files;
       retain repo timestamp datesas count uniques;
       length cmd cmd1 $200 repo $384;
       input;
@@ -140,12 +141,27 @@ Github interface for traffic analysis for last 14 days. Keywords: sas sql join m
       * build pickle database;
       cmd=catx(" ","py github_traffic_stats.py collect -r",repo,"-u rogerjdeangelis -p sas28rlx");
       call system(cmd);
-      call sleep(1);
+      *call sleep(1);
 
       * export pickle database to csv;
       cmd1=catx(" ","py github_traffic_stats.py exportcsv -r", repo);
       call system(cmd1);
+      drop cmd cmd1;
+    cards4;
+    rogerjdeangelis/Calculate-more-accurate-standard-deviation-as-quarters-are-added 5 KB
+    rogerjdeangelis/Dynamic_variable_in_a_DOSUBL_execute_macro_in_SAS 4 KB
+    rogerjdeangelis/Fastest-method-to-determine-if-a-column-contains-any-duplicates 8 KB
+    rogerjdeangelis/generate_50_million_alphanumeric_unique_keys 20 KB
+    rogerjdeangelis/How-to-create-a-table-to-hold-the-missing-value-count-for-multiple-columns 5 KB
+    rogerjdeangelis/Median-of-all--maximum-payments-over-all-my-clients 6 KB
+    rogerjdeangelis/ods_excel_does_not_always_honor_start_at--bug 4 KB
+    rogerjdeangelis/ods_rtf_mutiple_justifications_within_one_compute_block 4 KB
+    ;;;;
+    run;quit;
 
+
+    data traffic;
+      set files;
       * process output from python;
       fylVarInp=cats("d:/csv/",repo,".csv");
       infile dummy filevar=fylVarInp dlm=',' end=dne;
@@ -158,15 +174,7 @@ Github interface for traffic analysis for last 14 days. Keywords: sas sql join m
          if timestamp ne 'timestamp' then output;
       end;
 
-      drop cmd cmd1;
-
-    cards4;
-    rogerjdeangelis/SASweave 2.94 MB
-    rogerjdeangelis/voodoo 5 KB
-    rogerjdeangelis/Calculate-more-accurate-standard-deviation-as-quarters-are-added 5 KB
-    ;;;;
     run;quit;
-
 
 
     OUTPUTS
@@ -234,7 +242,8 @@ Github interface for traffic analysis for last 14 days. Keywords: sas sql join m
 
     ;
 
-    data traffic;
+  
+    data files;
       retain repo timestamp datesas count uniques;
       length cmd cmd1 $200 repo $384;
       input;
@@ -244,14 +253,29 @@ Github interface for traffic analysis for last 14 days. Keywords: sas sql join m
       repo=scan(_infile_,2,'/ ');
 
       * build pickle database;
-      cmd=catx(" ","py github_traffic_stats.py collect -r",repo,"-u rogerjdeangelis -p xxxxxxxx");
+      cmd=catx(" ","py github_traffic_stats.py collect -r",repo,"-u rogerjdeangelis -p sas28rlx");
       call system(cmd);
       *call sleep(1);
 
       * export pickle database to csv;
       cmd1=catx(" ","py github_traffic_stats.py exportcsv -r", repo);
       call system(cmd1);
+      drop cmd cmd1;
+    cards4;
+    rogerjdeangelis/Calculate-more-accurate-standard-deviation-as-quarters-are-added 5 KB
+    rogerjdeangelis/Dynamic_variable_in_a_DOSUBL_execute_macro_in_SAS 4 KB
+    rogerjdeangelis/Fastest-method-to-determine-if-a-column-contains-any-duplicates 8 KB
+    rogerjdeangelis/generate_50_million_alphanumeric_unique_keys 20 KB
+    rogerjdeangelis/How-to-create-a-table-to-hold-the-missing-value-count-for-multiple-columns 5 KB
+    rogerjdeangelis/Median-of-all--maximum-payments-over-all-my-clients 6 KB
+    rogerjdeangelis/ods_excel_does_not_always_honor_start_at--bug 4 KB
+    rogerjdeangelis/ods_rtf_mutiple_justifications_within_one_compute_block 4 KB
+    ;;;;
+    run;quit;
 
+
+    data traffic;
+      set files;
       * process output from python;
       fylVarInp=cats("d:/csv/",repo,".csv");
       infile dummy filevar=fylVarInp dlm=',' end=dne;
@@ -264,17 +288,5 @@ Github interface for traffic analysis for last 14 days. Keywords: sas sql join m
          if timestamp ne 'timestamp' then output;
       end;
 
-      drop cmd cmd1;
-
-    cards4;
-    rogerjdeangelis/SASweave 2.94 MB
-    rogerjdeangelis/Calculate-more-accurate-standard-deviation-as-quarters-are-added 5 KB
-    rogerjdeangelis/Dynamic_variable_in_a_DOSUBL_execute_macro_in_SAS 4 KB
-    rogerjdeangelis/Fastest-method-to-determine-if-a-column-contains-any-duplicates 8 KB
-    rogerjdeangelis/How-to-create-a-table-to-hold-the-missing-value-count-for-multiple-columns 5 KB
-    rogerjdeangelis/Median-of-all--maximum-payments-over-all-my-clients 6 KB
-    rogerjdeangelis/ods_rtf_mutiple_justifications_within_one_compute_block 4 KB
-    rogerjdeangelis/Sorting-columns-of-a-table-in-place-in-a-SAS-dataset 11 KB
-    ;;;;
     run;quit;
 
