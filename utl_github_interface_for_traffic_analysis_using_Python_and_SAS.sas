@@ -248,7 +248,7 @@ data files;
   repo=scan(_infile_,2,'/ ');
 
   * build pickle database;
-  cmd=catx(" ","py github_traffic_stats.py collect -r",repo,"-u rogerjdeangelis -p sas28rlx");
+  cmd=catx(" ","py github_traffic_stats.py collect -r",repo,"-u rogerjdeangelis -p xxxxxxx");
   call system(cmd);
   *call sleep(1);
 
