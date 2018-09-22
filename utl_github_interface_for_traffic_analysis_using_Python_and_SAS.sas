@@ -240,7 +240,7 @@ Obs      REPO           TIMESTAMP          DATESAS    COUNT    UNIQUES
 
 ;
 
-
+options xwait xsync xmin;
 data files;
   retain repo timestamp datesas count uniques;
   length cmd cmd1 $200 repo $384;
