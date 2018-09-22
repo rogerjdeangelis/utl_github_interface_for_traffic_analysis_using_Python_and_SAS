@@ -245,7 +245,7 @@ Github interface for traffic analysis for last 14 days. Keywords: sas sql join m
 
     ;
 
-    options noxwait noxsync xmin;
+    options xwait xsync xmin;
     data files;
       retain repo timestamp datesas count uniques;
       length cmd cmd1 $200 repo $384;
