@@ -19,6 +19,9 @@ INPUTS AND PREPARATION
 
    2. Create a folder for intermediate files from python
       And make folder the present working directory(PWD)
+      
+     d:/csv
+     
       ie
          SASweave.db   pickle database
          SASweave.csv
