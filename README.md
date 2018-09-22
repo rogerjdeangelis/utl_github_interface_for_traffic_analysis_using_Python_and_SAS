@@ -25,6 +25,9 @@ Github interface for traffic analysis for last 14 days. Keywords: sas sql join m
 
        2. Create a folder for intermediate files from python
           And make folder the present working directory(PWD)
+          
+          d:/csv
+          
           ie
              SASweave.db   pickle database
              SASweave.csv
