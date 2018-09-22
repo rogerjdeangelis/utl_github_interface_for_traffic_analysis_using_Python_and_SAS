@@ -122,7 +122,7 @@ proc sql;
 PROCESS
 =======
 
-
+options noxwait noxsync xmin;
 data files;
   retain repo timestamp datesas count uniques;
   length cmd cmd1 $200 repo $384;
@@ -133,7 +133,7 @@ data files;
   repo=scan(_infile_,2,'/ ');
 
   * build pickle database;
-  cmd=catx(" ","py github_traffic_stats.py collect -r",repo,"-u rogerjdeangelis -p sas28rlx");
+  cmd=catx(" ","py github_traffic_stats.py collect -r",repo,"-u rogerjdeangelis -p xxxxxxxx");
   call system(cmd);
   *call sleep(1);
 
