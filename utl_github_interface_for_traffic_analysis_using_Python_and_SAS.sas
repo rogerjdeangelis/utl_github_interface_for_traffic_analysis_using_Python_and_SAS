@@ -1,11 +1,13 @@
 Github interface for traffic analysis for last 14 days
 
+If call system does not work, create a python script and run it inside python. This always work.
+
 Only works in Python 2.7.
 One reason is the 'print x' statement is not supported in Python 3.
 Look like POython has taken a page from SAS (classic editor support?)
 I wish SAS and WPS supported 2.7.
 
-I was unable to scrape the github reporsitory page.
+I was unable to programticallly scrape the github reporsitory page.
 Tried, SAS, Python and R, protected page?
 Cut and paste is needed.
 
