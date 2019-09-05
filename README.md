@@ -21,7 +21,7 @@
        2. Create a folder for intermediate files and final SAS table
 
           d:/txt
-          d:/git/txt (list of macro invovations)
+          d:/git/txt (list of macro invocations)
 
 
        3. Logon to your profile in github and copy list of repos to windows clipboard
